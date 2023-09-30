@@ -1,4 +1,4 @@
-# Readme for Satellite Tracking Script
+# Satellite Tracking Script
 
 This Python script allows you to retrieve real-time information about various amateur radio satellites. It provides two main functions:
 
