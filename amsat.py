@@ -1,15 +1,9 @@
 import requests
+import sys
 
 url_status = "https://www.amsat.org/status/api/v1/sat_info.php?name={}&hours={}"
 url_track = "https://www.amsat.org/track/api/v1/passes.php?location={}&object={}"
 
-sat_names = [
-    "AISAT-1",
-    "CubeBel-1",
-    "CUTE-1",
-    "LilacSat-2",
-    "FS-3",
-]
 
 def GetStatus(satname):
     res = requests.get(url=url_status.format(satname,"24"))
@@ -53,14 +47,26 @@ def Get1stPass(grid,satname):
 
 def GetAllSat1stPass(grid,sat_names):
     FirstPasses = []
-    for sat_name in sat_names:
-        First_Pass = Get1stPass(grid,sat_name)
-        print(sat_name, First_Pass)
+    First_Pass = Get1stPass(grid,sys.argv[1])
+    print(First_Pass)
 
+
+def GetAllSatsNames():
+     SatUrl = "https://www.amsat.org/track/api/v1/passes.php?objects"
+     res = requests.get(url=SatUrl)
+     data = res.json()
+     ListNames = list(data.keys())
+     for names in ListNames:
+         print(names)
+     sys.exit(0)
 
 if __name__ == "__main__":
     grid = "OI33"
     satname = "IO-86"
-#    print(GetStatus(satname))
-#    print(GetPasses(grid,satname))
-    GetAllSat1stPass(grid,sat_names)
+    if len(sys.argv) < 1:
+        print("Please enter one argument")
+        print("Example : python amsat.py ENSO")
+
+    if sys.argv[1] == "-SatInfos":
+        GetAllSatsNames()
+    GetAllSat1stPass(grid,sys.argv[1])
