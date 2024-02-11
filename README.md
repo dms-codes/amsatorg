@@ -19,18 +19,16 @@ pip install requests
 2. Run the script with the following command:
 
 ```bash
-python satellite_tracking.py
+python amsat.py SATNAME   
+  or   
+python amsat.py "Sat (Name)"   
+```
+## Print the list of all satellites  
+
+```bash
+python amsat.py -SatInfos  
 ```
 
-Make sure to modify the `grid` and `sat_names` variables within the script to match your desired grid location and list of satellite names for tracking. By default, the script is configured to track the following satellites:
-
-- AISAT-1
-- CubeBel-1
-- CUTE-1
-- LilacSat-2
-- FS-3
-
-You can customize the list of satellites by updating the `sat_names` variable.
 
 ## Examples
 
