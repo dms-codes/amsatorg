@@ -60,7 +60,7 @@ def GetAllSat1stPass(grid,sat_names):
 
 if __name__ == "__main__":
     grid = "OI33"
-    satname = "IO-86"
-#    print(GetStatus(satname))
+    satname = "AO-91"
+    print(GetStatus(satname))
 #    print(GetPasses(grid,satname))
-    GetAllSat1stPass(grid,sat_names)
+#    GetAllSat1stPass(grid,sat_names)
